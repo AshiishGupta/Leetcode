@@ -1,13 +1,20 @@
 class Solution {
 public:
+//     We are finding that break point where no. is single nd from that point we are dividing the arr into two halves left and right, 
+//     And intuition and logic here is , If 1st instance of no. is at even then it is in left part. Similarly If 1st instance of no. is at odd place then it is right part.
     int singleNonDuplicate(vector<int>& nums) {
-        // BRUTE FORCE TWO LOOPS o(n^2) AND XOR METHOD O(n)
+        int low=0,high=nums.size()-2,mid;
         
-        int n=nums.size();
-        int xorans=0;
-        for(int i=0;i<n;i++){
-            xorans=xorans^nums[i];
+        while(low<=high){
+            mid=(low+high)>>1; // Right shifting any no. by 1 means dividing it by 2
+            if(nums[mid]==nums[mid^1]){ //xor with one give you 1less than no. if no. is odd and one greater if no. is even
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
         }
-        return xorans;
+        return nums[low];
+        
     }
 };
