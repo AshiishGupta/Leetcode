@@ -1,12 +1,20 @@
 class Solution {
 public:
-    // T(c): O(n) 
     void rotate(vector<int>& nums, int k) {
         int n=nums.size();
-        k=k%n;
+        vector<int> temp(n);
+        for(int i=0;i<n;i++){
+            temp[(i+k)%n]=nums[i];
+        }
         
-        reverse(nums.begin(),nums.begin()+n-k);
-        reverse(nums.begin()+n-k,nums.end());
-        reverse(nums.begin(),nums.end());
+        nums=temp;
+        
+        // REVERSE TECHNIQUE
+//         int n=nums.size();
+//         k=k%n;
+        
+//         reverse(nums.begin(),nums.begin()+n-k);
+//         reverse(nums.begin()+n-k,nums.end());
+//         reverse(nums.begin(),nums.end());
     }
 };
