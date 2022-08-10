@@ -10,22 +10,18 @@
  */
 class Solution {
 public:
-    // SINGLE POINTER
+    // RECURSIVELY
     ListNode* removeElements(ListNode* head, int val) {
-        if(head==NULL) return head;
-        while(head!=NULL && head->val==val){
-            head=head->next;
+        if(head==NULL){
+            return head;
         }
-        ListNode* temp=head;
-        while(temp!=NULL && temp->next!=NULL){
-            if(temp->next->val==val){
-                temp->next=temp->next->next;
-            }
-            else{
-                temp=temp->next;
-            }
-        }
-        return head;
         
+        head->next=removeElements(head->next,val);
+        if(head->val==val){
+            return head->next;
+        }
+        else{
+            return head;
+        }
     }
 };
