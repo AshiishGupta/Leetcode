@@ -11,44 +11,27 @@
  */
 class Solution {
 public:
-    // ITERATIVE USING STACK
+    // CHEKC 1ST SUBMISSION
     vector<int> inorderTraversal(TreeNode* root) {
         stack<TreeNode*> st;
-        vector<int> inorder;
+        vector<int> ans;
+        
         while(true){
             if(root!=NULL){
                 st.push(root);
                 root=root->left;
             }
             else{
-                if(st.empty()==true) break;
+                if(st.empty()) break;
                 
-                root=st.top();
+                TreeNode* temp=st.top();
                 st.pop();
-                inorder.push_back(root->val);
-                root=root->right;               
+                ans.push_back(temp->val);
+                root=temp->right;
                 
             }
         }
-        return inorder;
         
+        return ans;
     }
-
-    
-    // RECURSIVE SOLN
-    // void solve(TreeNode* root,vector<int> &ans){
-    //     if(root==NULL){
-    //         return ;
-    //     }
-    //     else{
-    //         solve(root->left,ans);
-    //         ans.push_back(root->val);
-    //         solve(root->right,ans);
-    //     }
-    // }
-    // vector<int> inorderTraversal(TreeNode* root) {
-    //     vector<int> ans;
-    //     solve(root,ans);
-    //     return ans;
-    // }
 };
