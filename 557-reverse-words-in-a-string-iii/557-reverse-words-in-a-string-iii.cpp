@@ -1,6 +1,6 @@
 class Solution {
 public:
-    
+    // TWO POINTER APPROACH 
     string reverseWords(string s) {
         int j=0;
         for(int i=0;i<s.size();i++){
@@ -8,7 +8,6 @@ public:
                 reverse(s.begin()+j,s.begin()+i);
                 j=i+1;
             }
-            
         }
         reverse(s.begin()+j,s.end());
         return s;
